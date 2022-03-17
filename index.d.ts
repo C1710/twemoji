@@ -1,4 +1,4 @@
-interface TwemojiOptions {
+declare interface TwemojiOptions {
   /**
    * Default: MaxCDN
    */
@@ -29,7 +29,7 @@ interface TwemojiOptions {
   attributes?(): void;
 }
 
-const twemoji: {
+declare type Twemoji = {
   convert: {
     fromCodePoint(hexCodePoint: string): string;
     toCodePoint(utf16surrogatePairs: string): string;
@@ -37,5 +37,7 @@ const twemoji: {
   parse(node: HTMLElement | string, options?: TwemojiOptions): void;
 };
 
-export default twemoji;
-
+declare module 'twemoji' {
+  const twemoji: Twemoji;
+  export default twemoji;
+}
